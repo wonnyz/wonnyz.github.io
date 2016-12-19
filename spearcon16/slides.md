@@ -159,12 +159,6 @@ cf. *Everything is an Object*
 
 1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
 
---
-.footnote[
-모든 것을 액터로 처리할 필요는 없긴 함. <br>
-기존 프로그래밍 모델과 섞어쓸 수도 있음
-]
-
 ---
 class: center
 
@@ -195,6 +189,10 @@ class: middle
 
 * 행위 (Match, Login, ...)
 * 데이터 (User, Inventory, ...)
+
+.footnote[
+기존 프로그래밍 모델과 섞어쓸 수도 있음
+]
 
 --
 
@@ -480,12 +478,14 @@ AKKA 스타일이 주류였으나 이걸 한번 뒤집었다고 할까
   - Cluster 어딘가에서 새로 짜잔하고 뜬 액터가...
 
 --
-  - 난 아마 세 번째일거야
+  - *난 아마 세 번째일거야*
 
 *테스트를 안해봤으니 일단은 믿거나 말거나*
 
-.image[![the_end](./images/rei_third.jpg)]
+.image[![rei_third](./images/rei_third.jpg)]
 
+???
+마치 복제된 것처럼 죽으면 다른 곳에 뜬다..고 하는군요
 ---
 
 background-size: contain
@@ -585,9 +585,6 @@ background-image: url(./images/actor_model_as_stateful_middleware.png)
 캐시고 뭐고 다 알아서 하겠다는 의지의 표현이 잘 보이는 그림.
 ---
 
+# 실제로 구현해보니
 
-
-class: center
-![Actor Model as Stateful Middleware](./images/actor_model_as_stateful_middleware.png)
-
----
+- 역시 프로젝트가 여러 개인 점은 좀 불편했음
