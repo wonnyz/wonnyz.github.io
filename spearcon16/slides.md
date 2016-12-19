@@ -381,8 +381,9 @@ class: center
 
 --
 
-*메시지 전달은 Objective-C 같은 언어를 쓰셨던 분들에게는 익숙할지도*<br>
-패턴 매칭 등을 지원하는 함수형 언어와는 매우 잘 맞는다고 합니다.
+메시지 전달은 Objective-C 같은 언어를 쓰셨던 분들에게는 익숙할지도?
+
+패턴 매칭 등을 지원하는 함수형 언어와는 매우 잘 맞는다고 합니다
 
 ---
 # 설정할 것, 만들 것이 너무 많다
@@ -390,5 +391,46 @@ class: center
 * 여러 서버에 배치하려면?
   * Akka Clustering을 또 익혀야 함
 * Actor의 생성, 소멸, 에러 처리 등의 관리가 필요
-  * *이걸 원하는 사람에게는 강점일지도*
+  * 이런 것을 제어하고 싶은 사람에게는 강점일지도
+  * Actor Tree, State 같은 개념은 정말 강력해 보입니다
+---
+class: center
+# Virtual Actor Framework
+
+MSR Project Orleans, MS Service Fabric, **EA** (Bioware) Orbit
+
+--
+
+*Virtual* Actor라니 이건 또 뭐야?
+---
+# 가상 액터 (Virtual Actors)
+
+액터의 수명을 관리할 필요가 없음. 
+
+- Actor instances always exist, virtually
+- 각 Actor는 구별을 위해 고유 Key를 가짐
+- 이미 생성되어 있으면 불러오고, 없으면 프레임워크에서 생성
+
+--
+
+프레임워크가 다 해주십니다.
+
+- 생성 / GC 모두 런타임이 알아서
+- Clustering 기본 지원
+
+---
+
+# 가상 액터 (Virtual Actors)
+
+클러스터 안에서, 어느 Actor가 어느 호스트에 있는지 알 필요가 없음
+
+--
+
+어려운 말로 **위치 투명성** (Location Transparency) 
+
+--
+
+클라이언트는 액터 참조를 가져와서 메시지를 보내고 응답을 기다린다
+- 비동기!
+
 ---
