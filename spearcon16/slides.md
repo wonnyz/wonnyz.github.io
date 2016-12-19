@@ -546,6 +546,6 @@ Orleans에서는 가상 Actor을 Grain, 런타임이 도는 호스트를 Silo라
 
 class: center
 background-image: url(./images/actor_model_as_stateful_middleware.png)
-
+background-size: contain; 
 ---
 
