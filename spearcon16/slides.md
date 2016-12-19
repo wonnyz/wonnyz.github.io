@@ -225,7 +225,7 @@ Update Data
 
 ## **매번** 1 Read, 1 Update가 필요
 
-그리고 관련 모델은요... Match라도 되면 건드리는게 대체 몇개...?
+그리고 관련 모델은요... MatchEnd라도 되면 건드리는 게 대체...?
 
 ---
 class: center
@@ -245,9 +245,10 @@ Execute Logic<br>
 ---
 # Actor State
 
-* 생성될 때 불러올 수 있다
-* 상태가 변경될 때 저장할 수 있다
-* 변경이 잘 일어나지 않는다면?
+- 생성될 때 DB에서 불러올 수 있다
+- 요청을 받으면 그대로 복사본을 만들어 전달한다
+- 상태가 변경될 때 DB에 저장할 수 있다
+  - 변경이 잘 일어나지 않는다면?
 
 --
 
@@ -318,7 +319,7 @@ Service Fabric같이 백엔드 스토어를 제공하는 프레임워크도 있�
 
 ---
 class: center
-# 그런데 그렇게 좋다면 왜 난 못들어봤지
+# 그렇게 좋다는데 왜 난 처음 들어봤지
 
 그것이 말입니다...
 
@@ -326,7 +327,7 @@ class: center
 # 일단 언어에 따른 제약이...
 
 * 동시/병렬 처리를 언어에서 지원하거나, 런타임에서 잘 지원하거나
-* Python, node, Ruby 등은 그렇지 못한 예
+* Python, ECMAScript (node), Ruby 등은 그렇지 못한 예
 
 .footnote[
 multiprocess로 구현하지 못할 것은 아니지만 왜 그런 짓을
@@ -490,6 +491,9 @@ public class MatchGrain : Grain, IGrainWithIntegerKey, IMatchGrain
 		return true;
 	}
 
+```
+---
+```C#
 	public async Task<bool> EndMatch()
 	{
 		// 돈과 경험치 보상
@@ -517,6 +521,8 @@ public class MatchGrain : Grain, IGrainWithIntegerKey, IMatchGrain
 	}
 }
 ```
+???
+예제 코드로 짰던 것을 가져와봤는데, 아까에 비하면 훨씬 읽기 편한 코드라고 발표자는 생각함
 ---
 
 # 프로젝트 기본 구성 요소
