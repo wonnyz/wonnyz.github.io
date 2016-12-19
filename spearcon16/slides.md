@@ -49,17 +49,13 @@ template: inverse
 
 - 그나마도 SEA DB 장비 수는 한국의 절반 ^^
 ---
-# 엄청난 액세스
 
-Game DB
-![GameDB Op/s](./images/gamedb_ops.png)
-x 8
-
+background-size: contain
+background-image: url(./images/gamedb_ops.png)
 ---
-# 엄청난 액세스
 
-Redis 
-![Redis Op/s](./images/redis_ops.png)
+background-size: contain
+background-image: url(./images/redis_ops.png)
 
 ---
 
