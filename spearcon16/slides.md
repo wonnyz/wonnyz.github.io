@@ -190,10 +190,6 @@ class: middle
 * 행위 (Match, Login, ...)
 * 데이터 (User, Inventory, ...)
 
-.footnote[
-기존 프로그래밍 모델과 섞어쓸 수도 있음
-]
-
 --
 
 Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
@@ -495,6 +491,8 @@ background-image: url(./images/grain_reactivation.png)
 class: middle, center
 이런 작업을 최대한 어색하지 않은(!) 구문으로 구현할 수 있는 것이 특징
 
+샘플 코드를 잠시 보실까요
+
 ---
 ```C#
 public class MatchGrain : Grain, IGrainWithIntegerKey, IMatchGrain
@@ -585,6 +583,81 @@ background-image: url(./images/actor_model_as_stateful_middleware.png)
 캐시고 뭐고 다 알아서 하겠다는 의지의 표현이 잘 보이는 그림.
 ---
 
+# 주의할 점
+
+--
+
+모든 Actor 호출은 RPC Call임
+
+- Local이든, Remote든 Serialize & Deserialize 비용이 듬
+- 너무 주고받는 대화가 잦은 (*Chatty*) 액터들은 통합하는게 맞음
+
+--
+
+Stateful Actor는 메시지를 '*차례대로 하나씩*' 처리함
+
+- 1000 : 1 집계 같은 사용에는 적합하지 않음
+- StatelessWorker로 구현하고 내부에 적절히 락을 쓴다든지
+
+--
+
+여럿이 공유해야 하는 State가 있는 경우 적합하지 않음
+
+- MMORPG 서버가 이런 구조가 많다고 함
+- 우리랑은 크게 관계 없는 이야기
+
+---
+
 # 실제로 구현해보니
 
 - 역시 프로젝트가 여러 개인 점은 좀 불편했음
+- FO3처럼 게임 서버만 달랑 띄우고 디버깅하기는 어려울 듯
+
+--
+
+  - 이건 아일랜드 구조를 봐도 암담하겠던데...
+
+- 벼락치기였지만, 개발 속도는 꽤 빨랐음
+  - 기존 C# 문법과 크게 다르지 않고 유사하게 짤 수 있었음
+
+--- 
+
+# 그밖의 특징
+
+실행 단위가 Silo인 점
+- Grain (Actor) 은 Silo 안에서 무수히 많이 만들어지고 실행됨
+- 밖에서 보면 외부로의 연결은 Silo Process가 담당함
+
+--
+
+즉
+
+- 게임 서버를 열개를 띄울지 열다섯개 띄울지 쓸데없이 고민하지 않아도 됨
+- mongos를 Silo 하나당 하나씩 띄워도 연결이 폭주하지 않을 듯
+
+--
+
+사실 이 점은 언어가 병렬처리만 지원해도 해결되는 점이지만...
+
+<s>우리는 아니지!</s>
+
+---
+
+# 왜 이걸 쓰자고 주장하지 못했나
+
+- 스튜디오의 ECMAScript 사랑
+  - TypeScript까지 이어지다
+  - ES 2016이나 TS를 보니 이쯤이면 그냥 C#을 써도 될 것 같은데
+--
+
+- Windows + .NET Framework용 
+  - .NET Core을 지원하는 2.0이 이제 **Preview**가 나옴
+  - 왠지 분위기상 Windows Server를 쓰자고 하면 돌맞을 것 같았음
+--
+
+- MS의 늦은 행보
+  - .NET Core 1.0 발표를 앞두고 오락가락함
+  - .NET Framework에 비해 **빠진 API가 잔뜩** <s>제정신인가..</s> 
+  - 아직도 SDK는 Preview 상태. <s>이놈들 의지가 있는건가..</s>
+
+---
