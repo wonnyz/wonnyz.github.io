@@ -50,9 +50,10 @@ template: inverse
 - 64GB씩 박은 Redis 장비도...
   - 8대 이상
   - HA 구성은 하지도 않았는데?
+
 --
 
-- 그나마도 SEA DB 장비 수는 한국의 절반 ^^
+그나마도 SEA DB 장비 수는 한국의 절반 ^^!
 ---
 
 background-size: contain
@@ -125,7 +126,7 @@ class: center
 ..어쨌든 제 느낌은 저랬다는 겁니다.
 ---
 class: center
-# ..어쨌든
+# 각설하고
 
 모든 것을 포기했지만,
 
@@ -157,8 +158,14 @@ cf. *Everything is an Object*
 ---
 # 생각보다 오래된 개념
 
-1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
+1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..<br>
+> [A universal modular ACTOR formalism for artificial intelligence](http://dl.acm.org/citation.cfm?id=1624804)
+> IJCAI'73 Proceedings of the 3rd international joint conference on Artificial intelligence
+Pages 235-245
 
+--
+
+현대 컴퓨팅에 쓰이는 개념 상당수는 이미 몇십년 전의 천재들이 다 만든 그런 느낌 
 ---
 class: center
 
@@ -661,9 +668,9 @@ Stateful Actor는 메시지를 *차례대로 하나씩* 처리함
 
 ---
 
-# 최신 트렌드에 따라 질문 안받겠습니다
+# 최신 트렌드에 따라 질문은 받지 않겠습니다
 
 ---
 
-# ..농담이고, 혹시나 질문 있으신 분?
+# ...농담이고, 혹시나 질문 있으신 분?
 
