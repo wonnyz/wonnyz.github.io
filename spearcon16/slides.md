@@ -44,28 +44,33 @@ class: middle, center
 Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
 위의 규칙을 지키도록 구현된 프레임워크가 필요함
 ---
-class: middle,center
+class: middle
 # 지금 쓰고 있는 것은 어떤데?
 Route된 연결이 Controller의 한 메소드를 거치며 모든 것을 처리함
+.left[
 * 요청이 들어오면 다른 함수를 호출해서 처리하고 반환함
 * ○○○ 정보가 필요하다 → 1회용 ○○○ 개체를 생성해서 만들어!<br>
   함수의 Scope를 벗어나면 폐기됨 (GC가 하든 사용자가 하든)
 * 이걸 모든 요청에 대해 반복
-
+]
 Worker Thread를 여러 개 쓰는 게임 서버도 기본적으로 비슷함
+.left[
 * 하는 짓이 똑같은 스레드만 많았다 이거임
+]
 ---
 class: middle, center
 # Actor Model에서는?
 모든 것을 Actor로 만들 **수도** 있음
+.left[
 * 행위 (Match, Login, ...)
 * 데이터 (User, Inventory, ...)
-
+]
 Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
+.left[
 * 함수 리턴값 대신 다른 액터의 응답을 기다림 (async)
 * 아니면 보내기만 할 수도 있고 (fire-and-forget)
 * 우린 이미 비동기 프로그래밍을 지겹게 해봐서 익숙한 패턴
-
+]
 **메시지를 받은 Actor**는 요청을 처리하고 송신자에게 회신함
 * 그리고 다른 요청이 있다면 **그걸 계속 처리하고 있을 것**임
 
