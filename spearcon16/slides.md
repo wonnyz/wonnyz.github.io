@@ -49,18 +49,20 @@ template: inverse
 
 - 그나마도 SEA DB 장비 수는 한국의 절반 ^^
 ---
-# 무지막지한 액세스
+# 엄청난 액세스
 
-- Game DB: 초당 
-  - Read x,xxx건
-  - Update: x,xxx건
+Game DB
+![GameDB Op/s](./images/gamedb_ops.png)
+x 8
 
-- Player DB: 초당
-  - Read x,xxx건
-  - Update: x,xxx건
-
-- Redis
 ---
+# 엄청난 액세스
+
+Redis 
+![Redis Op/s](./images/redis_ops.png)
+
+---
+
 class: center
 # 아마도 개발팀은 크게 관심없겠지만
 
@@ -401,8 +403,8 @@ class: center
 ]
 --
 
-- [MSR Project Orleans](https://dotnet.github.io/orleans/) 
-  - 2011년부터 개발, 2014년 공개
+- [MS Orleans](https://dotnet.github.io/orleans/) 
+  - Microsoft Research에서 2011년부터 개발, 2014년 공개
   - Halo 4, Halo 5 등의 서비스를 담당함
 --
 
@@ -413,7 +415,8 @@ class: center
 - [**EA** (Bioware) Orbit](https://github.com/orbit)
   - Orleans에 영향을 받아 JVM으로 작성됨
   - Slack 채널도 있습디다
-
+???
+AKKA 스타일이 주류였으나 이걸 한번 뒤집었다고 할까
 ---
 # 가상 액터 (Virtual Actors)
 
@@ -547,7 +550,11 @@ Orleans에서는 가상 Actor을 Grain, 런타임이 도는 호스트를 Silo라
 class: center
 background-size: contain
 background-image: url(./images/actor_model_as_stateful_middleware.png)
+???
+캐시고 뭐고 다 알아서 하겠다는 의지의 표현이 잘 보이는 그림.
 ---
+
+
 
 class: center
 ![Actor Model as Stateful Middleware](./images/actor_model_as_stateful_middleware.png)
