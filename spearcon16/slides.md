@@ -58,19 +58,19 @@ Worker Thread를 여러 개 쓰는 게임 서버도 기본적으로 비슷함
 * 하는 짓이 똑같은 스레드만 많았다 이거임
 ]
 ---
-class: middle, center
+class: middle
 # Actor Model에서는?
 모든 것을 Actor로 만들 **수도** 있음
-.left[
+
 * 행위 (Match, Login, ...)
 * 데이터 (User, Inventory, ...)
-]
+
 Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
-.left[
+
 * 함수 리턴값 대신 다른 액터의 응답을 기다림 (async)
 * 아니면 보내기만 할 수도 있고 (fire-and-forget)
 * 우린 이미 비동기 프로그래밍을 지겹게 해봐서 익숙한 패턴
-]
+
 **메시지를 받은 Actor**는 요청을 처리하고 송신자에게 회신함
 * 그리고 다른 요청이 있다면 **그걸 계속 처리하고 있을 것**임
 
@@ -78,9 +78,9 @@ Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
 ???
 처리하는 Context가 컨트롤러 메소드에 있느냐, 각 액터에 있느냐...
 ---
-class: middle
+class: middle, center
 # Login 처리
-
+.left[
 기존 코드 | Actor Model
 --- | ---
 Controller Method | LoginActor
@@ -89,10 +89,10 @@ Session 데이터를 **불러옴** | **SessionActor**에게 메시지를 보내�
 User DB에서 유저 정보를 **읽어옴** 　　　| **UserActor**에게 메시지를 보내고 대기
 **Session 데이터를 생성함** | **SessionActor**에게 메시지를 보내고 대기
 세션키를 반환 | 로그인 성공 메시지를 반환
-
+]
 뭔가 비슷한 듯 다른 듯...
 ---
-class: middle
+class: middle, center
 # Being Stateful
 Actor는 '상태'(State)를 가질 수 있다.
 
@@ -120,18 +120,7 @@ Execute Logic<br>
 ↓<br>
 데이터 액터에게 갱신 요청<br>
 
-### 　　　
-
----
-
-class: middle, center
-## 각각을 액터로 짰다고 생각하면
-
-데이터 액터에게 조회 요청<br>
-↓<br>
-Execute Logic<br>
-↓<br>
-데이터 액터에게 갱신 요청<br>
+--
 
 ### 이렇게 봐선 뭐가 다른지 모르겠다
 
