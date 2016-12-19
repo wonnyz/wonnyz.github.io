@@ -41,8 +41,8 @@ template: inverse
   - 메모리 32기가씩 박은...
 --
 
-- DB 서버가 
-  - 게임 (*비싼* SSD) 16세트 x 3
+- 64GB씩 박은 DB 서버가 
+  - 게임 16세트 x 3 (**비싼** SSD 씀)
   - 로그 4세트 x 3
   - 기타 1세트 x 3
 --
@@ -52,6 +52,8 @@ template: inverse
 
 background-size: contain
 background-image: url(./images/gamedb_ops.png)
+???
+곱하기 8 ^^
 ---
 
 background-size: contain
