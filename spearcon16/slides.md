@@ -30,9 +30,10 @@ template: monokai
 cf. *Everything is an Object*
 
 --
-
+.footnote[
 모든 것을 액터로 처리할 필요는 없긴 함. <br>
 기존 프로그래밍 모델과 섞어쓸 수도 있음
+]
 ---
 
 ## An actor
