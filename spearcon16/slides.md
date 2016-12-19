@@ -581,8 +581,7 @@ Orleans에서는 가상 Actor을 Grain, 런타임이 도는 호스트를 Silo라
   - 인터페이스만 담음. 클라이언트와 공유함
 - Grain Implementation Classes Project
   - 실제 코드는 여기에 몰리게 됨. Interface를 참조함
-- Silo Host Project
-  - Interface, Implementation 모두 참조함
+  - 여기에 SiloHost를 붙여서 바로 띄우기도 함
 
 --
 
@@ -603,7 +602,7 @@ background-image: url(./images/actor_model_as_stateful_middleware.png)
 
 --
 
-모든 Actor 호출은 RPC Call임
+모든 Actor**간** 호출은 RPC Call임
 
 - Local이든, Remote든 Serialize & Deserialize 비용이 듬
 - 너무 주고받는 대화가 잦은 (*Chatty*) 액터들은 통합하는게 맞음
