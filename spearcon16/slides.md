@@ -394,18 +394,29 @@ class: center
   * 이런 것을 제어하고 싶은 사람에게는 강점일지도
   * Actor Tree, State 같은 개념은 정말 강력해 보입니다
 ---
-class: center
 # Virtual Actor Framework
-
-MSR Project Orleans, MS Service Fabric, **EA** (Bioware) Orbit
-
+.center[
+소개합니다
+]
 --
 
-*Virtual* Actor라니 이건 또 뭐야?
+- [MSR Project Orleans](https://dotnet.github.io/orleans/) 
+  - 2011년부터 개발, 2014년 공개
+  - Halo 4, Halo 5 등의 서비스를 담당함
+--
+
+- [MS Azure Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)
+  - MS Azure의 서비스에 사용됨, 2015년 GA
+--
+
+- [**EA** (Bioware) Orbit](https://github.com/orbit)
+  - Orleans에 영향을 받아 JVM으로 작성됨
+  - Slack 채널도 있습디다
+
 ---
 # 가상 액터 (Virtual Actors)
 
-액터의 수명을 관리할 필요가 없음. 
+액터의 수명을 관리할 필요가 없음
 
 - Actor instances always exist, virtually
 - 각 Actor는 구별을 위해 고유 Key를 가짐
@@ -413,14 +424,13 @@ MSR Project Orleans, MS Service Fabric, **EA** (Bioware) Orbit
 
 --
 
-프레임워크가 다 해주십니다.
+프레임워크가 다 해주십니다
 
 - 생성 / GC 모두 런타임이 알아서
-- Clustering 기본 지원
 
 ---
 
-# 가상 액터 (Virtual Actors)
+# Clustering 기본 지원
 
 클러스터 안에서, 어느 Actor가 어느 호스트에 있는지 알 필요가 없음
 
@@ -434,3 +444,47 @@ MSR Project Orleans, MS Service Fabric, **EA** (Bioware) Orbit
 - 비동기!
 
 ---
+
+# Clustering 기본 지원
+
+호스트가 다운되면 어떻게 하나요?
+
+- 바로 그 작업을 호출했던 클라이언트는 에러를 받을 수도 있음
+  - 이것도 테스트해서 데모하면 좋을거라 생각은 했습니다...
+
+- 다음 호출은 (이론상) 정상적으로 처리됨
+  - Cluster 어딘가에서 새로 짜잔하고 뜬 액터가...
+  - 난 아마 세 번째일거야 (레이 짤) <- 화면 3/4지점이 좋을 듯
+
+---
+class: middle, center
+이런 작업을 최대한 어색하지 않은(!) 구문으로 구현할 수 있는 것이 특징
+
+---
+
+# 프로젝트 기본 구성 요소
+
+Orleans에서는 가상 Actor을 Grain, 런타임이 도는 호스트를 Silo라고 함
+
+- Grain Interfaces Project
+  - 인터페이스만 담음. 클라이언트와 공유함
+- Grain Implementation Classes Project
+  - 실제 코드는 여기에 몰리게 됨. Interface를 참조함
+- Silo Host Project
+  - Interface, Implementation 모두 참조함
+
+--
+
+외부 연동시 Orleans Client로 접근하게 됨
+- REST API를 구현하는 웹 프레임워크를 앞에 놓고
+- Controller 메소드에서 Client를 가져다가 접근하는 식
+
+---
+
+class: center
+
+(actor_model_as_stateful_middleware.png)
+
+---
+
+
