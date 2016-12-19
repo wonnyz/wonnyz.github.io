@@ -80,7 +80,7 @@ class: center
 
 세상에는 장비 관리도 알아서 못하는 퍼블리셔도 있습니다<br>
 --
-(말로만 들었는데 내가 겪을 줄이야)
+(말로만 들었는데 내가 고통받을 줄이야)
 
 --
 
@@ -594,7 +594,7 @@ background-image: url(./images/actor_model_as_stateful_middleware.png)
 
 --
 
-Stateful Actor는 메시지를 '*차례대로 하나씩*' 처리함
+Stateful Actor는 메시지를 *차례대로 하나씩* 처리함
 
 - 1000 : 1 집계 같은 사용에는 적합하지 않음
 - StatelessWorker로 구현하고 내부에 적절히 락을 쓴다든지
@@ -620,7 +620,7 @@ Stateful Actor는 메시지를 '*차례대로 하나씩*' 처리함
 - 벼락치기였지만, 개발 속도는 꽤 빨랐음
   - 기존 C# 문법과 크게 다르지 않고 유사하게 짤 수 있었음
 
---- 
+---
 
 # 그밖의 특징
 
