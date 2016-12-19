@@ -307,8 +307,7 @@ Service Fabric같이 백엔드 스토어를 제공하는 프레임워크도 있�
 
 특정 모델의 데이터는 그 모델 액터에서만 처리하게 됨.
 ---
-물론 분산 Transaction이 나오면 좀 복잡해집니다만 ^_^...
-
+여기에 Transaction이 나오면 좀 복잡해집니다만 ^_^... <br>
 프레임워크에 따라서 서로 다른 방법으로 처리합니다.
 
 * Orbit은 EventSourceActor 기반으로 Transaction을 처리함
@@ -322,6 +321,21 @@ class: center
 # 그런데 그렇게 좋다면 왜 난 못들어봤지
 
 그것이 말입니다...
+
+---
+# 일단 언어에 따른 제약이...
+
+* 동시/병렬 처리를 언어에서 지원하거나, 런타임에서 잘 지원하거나
+* Python, node, Ruby 등은 그렇지 못한 예
+
+.footnote[
+multiprocess로 구현하지 못할 것은 아니지만 왜 그런 짓을
+]
+
+---
+# 그럼 JVM이나 CLR로는?
+
+Akka의 .NET 포팅인 Akka.NET 샘플 코드를 잠깐 봅시다
 
 ---
 ```C#
@@ -359,8 +373,6 @@ class: center
 ---
 # 생소하다
 
-방금 본 것은 Akka의 .NET 포팅인 Akka.NET
-
 * 함수 호출 대신 **메시지 전달** (Ask, Tell)
 * 메소드 정의 대신 **메시지 처리기** 정의 (Receive)
 * 파라미터 대신 **Data Transfer Object**
@@ -379,5 +391,4 @@ class: center
   * Akka Clustering을 또 익혀야 함
 * Actor의 생성, 소멸, 에러 처리 등의 관리가 필요
   * *이걸 원하는 사람에게는 강점일지도*
-*
-
+---
