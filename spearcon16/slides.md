@@ -158,8 +158,9 @@ cf. *Everything is an Object*
 ---
 # 생각보다 오래된 개념
 
-1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..<br>
-> [A universal modular ACTOR formalism for artificial intelligence](http://dl.acm.org/citation.cfm?id=1624804)
+1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념
+
+[A universal modular ACTOR formalism for artificial intelligence](http://dl.acm.org/citation.cfm?id=1624804)
 > IJCAI'73 Proceedings of the 3rd international joint conference on Artificial intelligence
 Pages 235-245
 
@@ -189,6 +190,11 @@ Route된 연결이 Controller의 한 메소드를 거치며 모든 것을 처리
 Worker Thread를 여러 개 쓰는 게임 서버도 기본적으로 비슷함
 
 - 하는 짓이 똑같은 스레드만 많았다 이거임
+
+--
+
+이 과정에서 뭘 남기는게 없으니 Stateless임
+
 ---
 class: middle
 # Actor Model?
@@ -286,7 +292,7 @@ Actor Framework은 다음을 보장한다.
 * **한번에 하나씩** 처리한다
 * 특별히 지정하지 않는다면 한 액터는 한번에 하나의 동작만 처리한다 <br>(non-reentrant)
 
-Race Condition이 발생하기가 더 어렵다.
+요청이 중복으로 들어와서 Race Condition이 발생하기 어렵다.
 ---
 # 다음 동작은 동시에 일어날 수 있다
 .left[
@@ -296,7 +302,7 @@ Race Condition이 발생하기가 더 어렵다.
 
 --
 
-User A와 User B는 서로 다른 액터가 처리한다
+User A와 User B는 서로 다른 액터가 처리한다.
 ---
 # 다음은 동시에 일어날 수 없다
 .left[
@@ -308,7 +314,7 @@ User A와 User B는 서로 다른 액터가 처리한다
 
 카드를 까고 보상을 받든 보상을 받고 카드를 까든 차례대로
 ---
-# 액터 스스로가 캐시가 된다
+# Actor 자체가 Cache 역할을 한다
 
 * 자신의 상태를 유지하면서 메모리에 떠 있다
 * 수명 관리는 프레임워크에서 해준다
@@ -407,7 +413,7 @@ class: center
 
 메시지 전달은 Objective-C 같은 언어를 쓰셨던 분들에게는 익숙할지도?
 
-패턴 매칭 등을 지원하는 함수형 언어와는 매우 잘 맞는다고 합니다
+패턴 매칭 등을 지원하는 함수형 언어와는 매우 잘 맞는다고 합니다.
 
 ---
 # 설정할 것, 만들 것이 너무 많다
@@ -428,6 +434,7 @@ class: center
   - Microsoft Research에서 2011년부터 개발, 2014년 공개
   - Halo 4, Halo 5 등의 서비스를 담당함
 --
+→ **이미 검증된 녀석**
 
 - [MS Azure Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)
   - MS Azure의 서비스에 사용됨, 2015년 GA
@@ -615,17 +622,21 @@ Stateful Actor는 메시지를 *차례대로 하나씩* 처리함
 
 ---
 
-# 실제로 구현해보니
+# 잠깐동안 써보니
 
 - 벼락치기였지만, 개발 속도는 꽤 빨랐음
   - 기존 C# 문법과 크게 다르지 않고 유사하게 짤 수 있었음
+- 인터페이스끼리 통신하다보니 구현체를 찾아가기 좀 불편함
+  - Grain 상속을 빼먹었더니 컴파일은 되는데 실행이 안되는 일이 있다거나
+- 수많은 기능에 비해 매뉴얼이 부실한 점은 아쉬움
 - 역시 프로젝트가 여러 개인 점은 좀 불편했음
 - FO3처럼 게임 서버만 달랑 띄우고 디버깅하기는 어려울 듯
 
 --
 
   - 이건 아일랜드 구조를 봐도 암담하겠던데...
-
+???
+예를 들어 OOO를 처리하는 메소드를 찾고 싶지만 정의를 찾으면 인터페이스만 잡힌다든지 하는 식.
 ---
 
 # 그밖의 특징
