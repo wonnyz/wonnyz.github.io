@@ -205,11 +205,11 @@ User DB에서 유저 정보를 **읽어옴** 　　　| **UserActor**에게 메�
 뭔가 비슷한 듯 다른 듯...
 ---
 class: center
-# Actor는 '상태'(State)를 가질 수 있다.
+# Actor는 '상태'(State)를 가질 수 있다
 
 --
 
-*? 그게 왜 중요하지*
+그게 뭐 어쨌다고..?
 ---
 class: center
 
@@ -223,13 +223,12 @@ Update Data
 
 --
 
-## *매번* <br>1 Read, 1 Update가 필요.
+## **매번** 1 Read, 1 Update가 필요
 
-그리고 모든 연관되는 모델에 대해 발생하는 Read는요...
+그리고 관련 모델은요... Match라도 되면 건드리는게 대체 몇개...?
 
 ---
-class: middle, center
-template: inverse
+class: center
 
 ## 각각을 액터로 짰다고 생각하면
 
@@ -244,43 +243,43 @@ Execute Logic<br>
 ### 이렇게 봐선 뭐가 다른지 모르겠다
 
 ---
-class: middle
 # Actor State
 
 * 생성될 때 불러올 수 있다
 * 상태가 변경될 때 저장할 수 있다
 * 변경이 잘 일어나지 않는다면?
 
+--
+
 오오 공짜 캐시 오오
 ???
-게다가 또 있다
+'불러올 수 있다', '저장할 수 있다'인 까닭은 이걸 사용자가 해줄 수도, Persistence 기능이 해줄 수도 있기 때문.
 ---
-class: middle, center
 # 복습
 
 Actor Framework은 다음을 보장한다.
 
-.left[
 * 싱글 스레드로 동작한다
 * **한번에 하나씩** 처리한다
 * 특별히 지정하지 않는다면 한 액터는 한번에 하나의 동작만 처리한다 <br>(non-reentrant)
-]
 
 Race Condition이 발생하기가 더 어렵다.
 ---
-class: middle
-다음 동작은 동시에 일어날 수 있다
+class: center
+# 다음 동작은 동시에 일어날 수 있다
+
 * User **A**는 선수 카드를 까는 중이고,
 * User **B**는 매치가 끝나서 보상을 받고 있다
 
-User A와 User B는 서로 다른 액터가 처리한다.
+User A와 User B는 서로 다른 액터가 처리한다
 ---
-class: middle
-다음은 동시에 일어날 수 없다.
+class: center
+
+# 다음은 동시에 일어날 수 없다
 * User **A**가 매치가 끝나고 보상을 받는다
 * User **A**가 자기가 가진 선수 카드를 까고 있다
 
-카드를 까고 보상을 받든 보상을 받고 카드를 까든 차례대로.
+카드를 까고 보상을 받든 보상을 받고 카드를 까든 차례대로
 ---
 class: middle
 # 액터 스스로가 캐시가 된다
