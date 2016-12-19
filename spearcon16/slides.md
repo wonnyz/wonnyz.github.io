@@ -98,6 +98,8 @@ class: center
 class: center
 # 현실은
 
+그런거 없다
+
 ---
 
 background-size: contain
@@ -128,9 +130,9 @@ class: center
 class: center
 # 각설하고
 
-모든 것을 포기했지만,
+모든 희망을 포기했지만,
 
-왜 액터 모델이 도움을 줄 거라고 생각했는지,
+왜 액터 모델이 성능 개선에 도움을 줄 거라고 생각했는지,
 
 그 이야기를 해보겠습니다.
 
