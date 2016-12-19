@@ -49,6 +49,18 @@ template: inverse
 
 - 그나마도 SEA DB 장비 수는 한국의 절반 ^^
 ---
+# 무지막지한 액세스
+
+- Game DB: 초당 
+  - Read x,xxx건
+  - Update: x,xxx건
+
+- Player DB: 초당
+  - Read x,xxx건
+  - Update: x,xxx건
+
+- Redis
+---
 class: center
 # 아마도 개발팀은 크게 관심없겠지만
 
@@ -114,6 +126,7 @@ template: monokai
 - is a **single threaded object**
 
 --
+
 **Everything is an Actor**<br>
 cf. *Everything is an Object*
 
@@ -143,22 +156,27 @@ Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
 # 지금 쓰고 있는 것은 어떤데?
 Route된 연결이 Controller의 한 메소드를 거치며 모든 것을 처리함
 
-* 요청이 들어오면 다른 함수를 호출해서 처리하고 반환함
-* ○○○ 정보가 필요하다 → 1회용 ○○○ 개체를 생성해서 만들어!<br>
+- 요청이 들어오면 다른 함수를 호출해서 처리하고 반환함
+- ○○○ 정보가 필요하다 → 1회용 ○○○ 개체를 생성해서 만들어!<br>
   함수의 Scope를 벗어나면 폐기됨 (GC가 하든 사용자가 하든)
-* 이걸 모든 요청에 대해 반복
+- 이걸 모든 요청에 대해 반복
+
 --
 
 Worker Thread를 여러 개 쓰는 게임 서버도 기본적으로 비슷함
 
-* 하는 짓이 똑같은 스레드만 많았다 이거임
+- 하는 짓이 똑같은 스레드만 많았다 이거임
 ---
 class: middle
-# Actor Model에서는?
+# Actor Model?
 모든 것을 Actor로 만들 **수도** 있음
 
 * 행위 (Match, Login, ...)
 * 데이터 (User, Inventory, ...)
+
+--
+
+꼭 그럴 필요는 없지만.
 
 Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
 
