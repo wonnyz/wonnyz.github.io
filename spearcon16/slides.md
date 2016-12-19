@@ -54,11 +54,11 @@ background-size: contain
 background-image: url(./images/gamedb_ops.png)
 ???
 곱하기 8 ^^
+요새 몽고를 다시 보고 있음. 이래도 버티는구나 하고...
 ---
 
 background-size: contain
 background-image: url(./images/redis_ops.png)
-
 ---
 
 class: center
@@ -83,6 +83,7 @@ class: center
 ???
 물론 돈을 부어서 장비 사양을 올리면 파멸의 시점을 늦춰주는 효과가 있긴 합니다.
 ---
+class: center
 # 신작 서비스에 바란다
 
 서버 성능 좀 높이고 DB 액세스 좀 줄여줬으면...!
@@ -90,16 +91,20 @@ class: center
 ---
 # 현실
 
-(edge 서버구조)
+.center[![img_4180.png](./images/img_4180.png)]
+
+..야 이거 내가 나이를 너무먹었나 도저히 못따라가겠다
 
 ---
 # 현실
 
-(twemproxy 짤)
+.center[![twemproxy.png](./images/twemproxy.png)]
+
+......
 
 ---
 class: center
-# 누가 이런 끔찍한 혼종을 <br>만들어냈단 말인가!
+# 누가 이런 끔찍한 것을 자꾸<br>만들어낸단 말인가!
 
 (제라툴 짤)
 
