@@ -148,7 +148,7 @@ cf. *Everything is an Object*
 ---
 class: center
 
-## An Actor Cannot Exist on Its Own
+# An Actor Cannot Exist on Its Own
 
 Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
 위의 규칙을 지키도록 구현된 프레임워크가 필요함
@@ -255,7 +255,6 @@ Execute Logic<br>
 ???
 '불러올 수 있다', '저장할 수 있다'인 까닭은 이걸 사용자가 해줄 수도, Persistence 기능이 해줄 수도 있기 때문.
 ---
-# 복습
 
 Actor Framework은 다음을 보장한다.
 
@@ -265,19 +264,26 @@ Actor Framework은 다음을 보장한다.
 
 Race Condition이 발생하기가 더 어렵다.
 ---
-class: center
+class: center, middle
 # 다음 동작은 동시에 일어날 수 있다
-
+.left[
 * User **A**는 선수 카드를 까는 중이고,
 * User **B**는 매치가 끝나서 보상을 받고 있다
+]
+
+--
 
 User A와 User B는 서로 다른 액터가 처리한다
 ---
-class: center
+class: center, middle
 
 # 다음은 동시에 일어날 수 없다
+.left[
 * User **A**가 매치가 끝나고 보상을 받는다
 * User **A**가 자기가 가진 선수 카드를 까고 있다
+]
+
+--
 
 카드를 까고 보상을 받든 보상을 받고 카드를 까든 차례대로
 ---
