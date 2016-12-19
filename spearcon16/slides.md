@@ -1,4 +1,5 @@
 class: middle, center
+template: inverse
 
 # Actor Model로 서버를 짜보자
 사실은 Microsoft Orleans 알아보기
@@ -8,9 +9,12 @@ class: middle, center
 
 사실은 처음 생각했던 것보다 많이 줄어든 것
 
-뭘 어떻게 해도 바뀌는 것이 없을테니,
+도중에 의욕이 많이 도망가서 (..)
 
 그냥 이런 것이 있고 알아보니 이랬다는 것만 알려드리는 것으로
+???
+어차피 안 바뀔 거잖아요?
+---
 
 ---
 class: middle
@@ -39,6 +43,8 @@ class: middle
 한번에 하나를 처리하고, ...
 ---
 class: middle, center
+template: inverse
+
 ## An Actor Cannot Exist on Its Own
 
 Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
@@ -78,7 +84,7 @@ Actor Client, 또는 Actor Method는 다른 Actor에 메시지를 보냄
 ???
 처리하는 Context가 컨트롤러 메소드에 있느냐, 각 액터에 있느냐...
 ---
-class: middle, center
+class: middle
 # Login 처리
 .left[
 기존 코드 | Actor Model
@@ -93,12 +99,12 @@ User DB에서 유저 정보를 **읽어옴** 　　　| **UserActor**에게 메�
 뭔가 비슷한 듯 다른 듯...
 ---
 class: middle, center
-# Being Stateful
 Actor는 '상태'(State)를 가질 수 있다.
 
 *? 그게 왜 중요하지*
 ---
 class: middle, center
+template: inverse
 
 ## 어떤 데이터를 갱신할 때, <br>보통 이런 단계를 거친다면
 
@@ -108,10 +114,14 @@ Execute Logic<br>
 ↓<br>
 Update Data
 
+--
+
 ## 모든 작업에 대해 <br>1 Read, 1 Update가 필요.
 
 ---
 class: middle, center
+template: inverse
+
 ## 각각을 액터로 짰다고 생각하면
 
 데이터 액터에게 조회 요청<br>
