@@ -20,9 +20,38 @@ template: inverse
 ???
 어차피 안 바뀔 거잖아요?
 ---
+# 갑자기 왠 서버 모델 타령이야?
+우리가 뭐가 그리 부족하다고?
+
+---
+# 넘치는 서버 수
+
+- 게임 서버가 >130대
+--
+
+- DB 서버가 
+  - 게임 16세트 x 3
+  - 로그 4세트 x 3
+  - 기타 1세트
+--
+
+- 그나마도 SEA 서비스는 한국의 절반 ^^
+---
+# 아마도 개발팀은 잘 모르겠지만
+
+장비가 늘어난다고 모든게 해결되지 않습니다
+--
+
+장비가 늘어나면 고장도 늘어납니다
+--
+
+세상에는 장비 관리까지 해줘야 하는 퍼블리셔도 있습니다
+
+---
+
 template: monokai
 
-## 생각보다 오래된 개념
+# 생각보다 오래된 개념
 
 1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
 
@@ -36,7 +65,7 @@ cf. *Everything is an Object*
 ]
 ---
 
-## An actor
+# An actor
 - is lightweight
 - can be **stateful**
 - **never shares** state
@@ -49,27 +78,25 @@ cf. *Everything is an Object*
 다른 액터와 메시지를 주고 받으면서 통신하고, 우편함이 있고,
 한번에 하나를 처리하고, ...
 ---
-template: inverse
+class: center
 
 ## An Actor Cannot Exist on Its Own
 
 Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
 위의 규칙을 지키도록 구현된 프레임워크가 필요함
 ---
-layout: false
-class: middle
 # 지금 쓰고 있는 것은 어떤데?
 Route된 연결이 Controller의 한 메소드를 거치며 모든 것을 처리함
-.left[
+
 * 요청이 들어오면 다른 함수를 호출해서 처리하고 반환함
 * ○○○ 정보가 필요하다 → 1회용 ○○○ 개체를 생성해서 만들어!<br>
   함수의 Scope를 벗어나면 폐기됨 (GC가 하든 사용자가 하든)
 * 이걸 모든 요청에 대해 반복
-]
+--
+
 Worker Thread를 여러 개 쓰는 게임 서버도 기본적으로 비슷함
-.left[
+
 * 하는 짓이 똑같은 스레드만 많았다 이거임
-]
 ---
 class: middle
 # Actor Model에서는?
