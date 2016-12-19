@@ -30,10 +30,13 @@ class: middle
 **Everything is an Actor**<br>
 cf. *Everything is an Object*
 
+--
 모든 것을 액터로 처리할 필요는 없긴 함. <br>
 기존 프로그래밍 모델과 섞어쓸 수도 있음
 ---
+layout: false
 class: middle
+
 ## An actor
 - is lightweight
 - can be **stateful**
@@ -47,7 +50,6 @@ class: middle
 다른 액터와 메시지를 주고 받으면서 통신하고, 우편함이 있고,
 한번에 하나를 처리하고, ...
 ---
-class: middle, center
 template: inverse
 
 ## An Actor Cannot Exist on Its Own
@@ -55,6 +57,7 @@ template: inverse
 Erlang 같이 언어가 그렇게 생겨먹었다면 모를까 <br>
 위의 규칙을 지키도록 구현된 프레임워크가 필요함
 ---
+layout: false
 class: middle
 # 지금 쓰고 있는 것은 어떤데?
 Route된 연결이 Controller의 한 메소드를 거치며 모든 것을 처리함
