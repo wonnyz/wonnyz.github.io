@@ -461,6 +461,63 @@ class: middle, center
 이런 작업을 최대한 어색하지 않은(!) 구문으로 구현할 수 있는 것이 특징
 
 ---
+```C#
+public class MatchGrain : Grain, IGrainWithIntegerKey, IMatchGrain
+{
+	List<IUserGrain> users;
+	Dictionary<string, List<PlayerData>> userTeamData;
+	Random r = new Random();
+
+	private IUserTeamPlayersGrain GetTeamPlayersById(string id)
+	{
+		return GrainFactory.GetGrain<IUserTeamPlayersGrain>(id);
+	}
+
+	public override Task OnActivateAsync()
+	{
+		users = new List<IUserGrain>();
+		userTeamData = new Dictionary<string, List<PlayerData>>();
+		return base.OnActivateAsync();
+	}
+
+	// join match
+	public async Task<bool> JoinMatch(string userId)
+	{
+		users.Add(GrainFactory.GetGrain<IUserGrain>(userId));
+		// 아무것도 하지 않지만, 매치 전에 Player Data를 읽어들인다는 상징적인 의미로
+		var teamData = await GetTeamPlayersById(userId).GetTeamPlayers();
+		userTeamData.Add(userId, teamData);
+		return true;
+	}
+
+	public async Task<bool> EndMatch()
+	{
+		// 돈과 경험치 보상
+		users.ForEach(async user =>
+		{
+			var moneyToAdd = r.Next(10, 100) * 100;
+			var expToAdd = moneyToAdd / 10;
+			await user.AddMoneyExp(dmoney: moneyToAdd, dexp: expToAdd);
+		});
+
+		// 선수들의 경험치 업데이트
+		foreach (var kvp in userTeamData)
+		{
+			var userid = kvp.Key;
+			var teamPlayers = kvp.Value;
+			teamPlayers.ForEach(player =>
+			{
+				player.Exp += r.Next(10, 100) * 5;
+			});
+			await GetTeamPlayersById(userid).UpdatePlayers(teamPlayers);
+		}
+
+		this.DeactivateOnIdle();
+		return true;
+	}
+}
+```
+---
 
 # 프로젝트 기본 구성 요소
 
@@ -486,5 +543,4 @@ class: center
 (actor_model_as_stateful_middleware.png)
 
 ---
-
 
