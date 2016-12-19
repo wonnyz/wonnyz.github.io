@@ -264,7 +264,6 @@ Actor Framework은 다음을 보장한다.
 
 Race Condition이 발생하기가 더 어렵다.
 ---
-class: center, middle
 # 다음 동작은 동시에 일어날 수 있다
 .left[
 * User **A**는 선수 카드를 까는 중이고,
@@ -275,8 +274,6 @@ class: center, middle
 
 User A와 User B는 서로 다른 액터가 처리한다
 ---
-class: center, middle
-
 # 다음은 동시에 일어날 수 없다
 .left[
 * User **A**가 매치가 끝나고 보상을 받는다
@@ -287,7 +284,6 @@ class: center, middle
 
 카드를 까고 보상을 받든 보상을 받고 카드를 까든 차례대로
 ---
-class: middle
 # 액터 스스로가 캐시가 된다
 
 * 자신의 상태를 유지하면서 메모리에 떠 있다
@@ -301,7 +297,6 @@ class: middle
 물론 세션 데이터 등이라면 Redis를 백엔드로 삼든지 해야할 것이다<br>
 Service Fabric같이 백엔드 스토어를 제공하는 프레임워크도 있음. 별도 저장소 불필요
 ---
-class: middle
 # 데이터 관리 주체가 명확해짐
 
 각 모델을 액터로 만들었다면
@@ -312,10 +307,51 @@ class: middle
 
 특정 모델의 데이터는 그 모델 액터에서만 처리하게 됨.
 ---
-class: middle, center
 물론 분산 Transaction이 나오면 좀 복잡해집니다만 ^_^...
 
-* 프레임워크에 따라서 서로 다른 방법으로 처리함<br>
-  * Orbit은 EventSourceActor 기반으로 Transaction을 처리함
-  * Service Fabric도 자체 트랜잭션 기능이 있음
-* Interceptor / Actor Locking 등으로 처리 가능할 듯
+프레임워크에 따라서 서로 다른 방법으로 처리합니다.
+
+* Orbit은 EventSourceActor 기반으로 Transaction을 처리함
+* Service Fabric도 자체 트랜잭션 기능이 있음
+* 여러가지 패턴으로 구현하려는 시도가 Orleans에도 있는 듯
+
+요는 변경된 내용을 어떻게, 한꺼번에 처리하느냐니까요...
+
+---
+class: center
+# 그런데 그렇게 좋다면 왜 난 못들어봤지
+
+그것이 말입니다...
+
+---
+```C#
+public OrderProcessorActor() {
+	Receive<PlaceOrder>(placeOrder => PlaceOrderHandler(placeOrder));
+	Receive<OrderPlaced>(orderPlaced => OrderPlacedHandler(orderPlaced));
+	Receive<AccountCharged>(accountCharged => AccountChargedHandler(accountCharged));
+}
+private void PlaceOrderHandler(PlaceOrder placeOrder) {
+	var orderActor = Context.ActorOf(
+		Props.Create(
+			() => new OrderActor(
+				(int)DateTime.Now.Ticks)),
+		"orderActor" + DateTime.Now.Ticks);
+	orderActor.Tell(placeOrder);
+}
+private void OrderPlacedHandler(OrderPlaced orderPlaced) {
+	var accountActor = Context.ActorOf(
+		Props.Create(
+			() => new AccountActor(
+				orderPlaced.OrderInfo.AccountId)),
+		"accountActor" + orderPlaced.OrderInfo.AccountId);
+	accountActor.Tell(new ChargeCreditCard(orderPlaced.OrderInfo.ExtPrice));
+}```
+---
+
+# 엄.. 내가 방금 뭘 본거지
+
+--
+
+생소한 개념이 너무 많아!
+
+---
