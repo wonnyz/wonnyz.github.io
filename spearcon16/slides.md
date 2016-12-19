@@ -1,17 +1,17 @@
 name: inverse
 layout: true
-class: center, middle, inverse
+class: center, middle, monokai
 ---
-
-class: middle, center
+name: monokai
+layout: true
+class: middle, monokai
+---
 template: inverse
 
 # Actor Model로 서버를 짜보자
 사실은 Microsoft Orleans 알아보기
 
 ---
-class: middle, center
-
 사실은 처음 생각했던 것보다 많이 줄어든 것
 
 도중에 의욕이 많이 도망가서 (..)
@@ -20,9 +20,8 @@ class: middle, center
 ???
 어차피 안 바뀔 거잖아요?
 ---
+template: monokai
 
----
-class: middle
 ## 생각보다 오래된 개념
 
 1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
@@ -31,11 +30,10 @@ class: middle
 cf. *Everything is an Object*
 
 --
+
 모든 것을 액터로 처리할 필요는 없긴 함. <br>
 기존 프로그래밍 모델과 섞어쓸 수도 있음
 ---
-layout: false
-class: middle
 
 ## An actor
 - is lightweight
