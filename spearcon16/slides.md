@@ -347,11 +347,37 @@ private void OrderPlacedHandler(OrderPlaced orderPlaced) {
 	accountActor.Tell(new ChargeCreditCard(orderPlaced.OrderInfo.ExtPrice));
 }```
 ---
-
+class: center
 # 엄.. 내가 방금 뭘 본거지
 
 --
 
 생소한 개념이 너무 많아!
+???
+뭔가 시스템의 날것을 그대로 본 기분! 
+콜백을 대신하겠다고 제너레이터를 그대로 쓰는 기분!
+---
+# 생소하다
+
+방금 본 것은 Akka의 .NET 포팅인 Akka.NET
+
+* 함수 호출 대신 **메시지 전달** (Ask, Tell)
+* 메소드 정의 대신 **메시지 처리기** 정의 (Receive)
+* 파라미터 대신 **Data Transfer Object**
+
+*하나하나 까보면 이해가 가지 않는건 아닌데, 뭔가 알아야 하는게 너무 많아...*
+
+--
+
+*메시지 전달은 Objective-C 같은 언어를 쓰셨던 분들에게는 익숙할지도*<br>
+패턴 매칭 등을 지원하는 함수형 언어와는 매우 잘 맞는다고 합니다.
 
 ---
+# 설정할 것, 만들 것이 너무 많다
+
+* 여러 서버에 배치하려면?
+  * Akka Clustering을 또 익혀야 함
+* Actor의 생성, 소멸, 에러 처리 등의 관리가 필요
+  * *이걸 원하는 사람에게는 강점일지도*
+*
+
