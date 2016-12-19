@@ -87,7 +87,11 @@ class: center
 
 ---
 class: center
-# 누가 이런 끔찍한 혼종을 만들어냈단 말인가!
+# 누가 이런 끔찍한 혼종을 <br>만들어냈단 말인가!
+
+(제라툴 짤)
+
+틀렸어 이제 꿈도 희망도 없어
 ???
 ..어쨌든 제 느낌은 저랬다는 겁니다.
 ---
@@ -98,22 +102,7 @@ class: center
 이야기를 해보겠습니다.
 
 ---
-
 template: monokai
-
-# 생각보다 오래된 개념
-
-1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
-
-**Everything is an Actor**<br>
-cf. *Everything is an Object*
-
---
-.footnote[
-모든 것을 액터로 처리할 필요는 없긴 함. <br>
-기존 프로그래밍 모델과 섞어쓸 수도 있음
-]
----
 
 # An actor
 - is lightweight
@@ -123,10 +112,26 @@ cf. *Everything is an Object*
 - **has a mailbox** to buffer messages
 - processes **one message a time**
 - is a **single threaded object**
+
+--
+**Everything is an Actor**<br>
+cf. *Everything is an Object*
+
 ???
 가볍고, 상태를 가질 수 있고, 다른 액터와 상태를 공유하지 않고,
 다른 액터와 메시지를 주고 받으면서 통신하고, 우편함이 있고,
 한번에 하나를 처리하고, ...
+---
+# 생각보다 오래된 개념
+
+1973년에 Carl Hewitt 외 2명에 의해 만들어진 개념이라고..
+
+--
+.footnote[
+모든 것을 액터로 처리할 필요는 없긴 함. <br>
+기존 프로그래밍 모델과 섞어쓸 수도 있음
+]
+
 ---
 class: center
 
