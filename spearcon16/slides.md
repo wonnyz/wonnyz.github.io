@@ -89,24 +89,31 @@ class: center
 서버 성능 좀 높이고 DB 액세스 좀 줄여줬으면...!
 
 ---
-# 현실
-
-.center[![img_4180.png](./images/img_4180.png)]
-
-..야 이거 내가 나이를 너무먹었나 도저히 못따라가겠다
-
----
-# 현실
-
-.center[![twemproxy.png](./images/twemproxy.png)]
-
-......
-
----
 class: center
-# 누가 이런 끔찍한 것을 자꾸<br>만들어낸단 말인가!
+# 현실은
 
-(제라툴 짤)
+---
+
+background-size: contain
+background-image: url(./images/img_4180.png)
+
+---
+
+background-size: contain
+background-image: url(./images/twemproxy.png)
+
+---
+
+class: center
+## 누가 이런 끔찍한 것을 자꾸 ...
+
+..왜 갈수록 복잡해지는걸까..
+
+--
+
+..이거 내가 나이를 너무먹었나 도저히 못따라가겠다
+
+--
 
 틀렸어 이제 꿈도 희망도 없어
 ???
