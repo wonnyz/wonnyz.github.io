@@ -83,6 +83,8 @@ class: center
 --
 *(말로만 들었는데 내가 고통받을 줄이야)*
 
+.image[![your_story](./images/your_story.jpg)]
+
 --
 
 항상 돈으로 해결할 수 있는 것도 아닙니다
